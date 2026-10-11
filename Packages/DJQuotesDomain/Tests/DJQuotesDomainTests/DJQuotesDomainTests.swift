@@ -121,29 +121,29 @@ import Foundation
 }
 
 @Test func quoteLifecycleDraftToSentValid() {
-    #expect(QuoteLifecycle.canTransition(from: .draft, to: .sent))
+    #expect(QuoteLifecycle.canTransition(from: "DRAFT", to: "SENT"))
 }
 
 @Test func quoteLifecycleSentToAcceptedValid() {
-    #expect(QuoteLifecycle.canTransition(from: .sent, to: .accepted))
+    #expect(QuoteLifecycle.canTransition(from: "SENT", to: "ACCEPTED"))
 }
 
 @Test func quoteLifecycleSentToDraftInvalid() {
-    #expect(!QuoteLifecycle.canTransition(from: .sent, to: .draft))
+    #expect(!QuoteLifecycle.canTransition(from: "SENT", to: "DRAFT"))
 }
 
 @Test func quoteLifecycleAcceptedCannotTransition() {
-    #expect(!QuoteLifecycle.canTransition(from: .accepted, to: .sent))
-    #expect(!QuoteLifecycle.canTransition(from: .accepted, to: .draft))
+    #expect(!QuoteLifecycle.canTransition(from: "ACCEPTED", to: "SENT"))
+    #expect(!QuoteLifecycle.canTransition(from: "ACCEPTED", to: "DRAFT"))
 }
 
 @Test func quoteLifecycleTerminalStatuses() {
-    #expect(QuoteLifecycle.isTerminal(.accepted))
-    #expect(QuoteLifecycle.isTerminal(.rejected))
-    #expect(QuoteLifecycle.isTerminal(.expired))
-    #expect(QuoteLifecycle.isTerminal(.cancelled))
-    #expect(!QuoteLifecycle.isTerminal(.draft))
-    #expect(!QuoteLifecycle.isTerminal(.sent))
+    #expect(QuoteLifecycle.isTerminal("ACCEPTED"))
+    #expect(QuoteLifecycle.isTerminal("REJECTED"))
+    #expect(QuoteLifecycle.isTerminal("EXPIRED"))
+    #expect(QuoteLifecycle.isTerminal("CANCELLED"))
+    #expect(!QuoteLifecycle.isTerminal("DRAFT"))
+    #expect(!QuoteLifecycle.isTerminal("SENT"))
 }
 
 @Test func quoteFolioFormat() {
@@ -161,8 +161,6 @@ import Foundation
     let next = QuoteFolioGenerator.nextQuoteNumber(existingNumbers: [])
     #expect(next == 1)
 }
-
-// MARK: - ADR-020 Money precision fixture
 
 @Test func moneyPrecisionFixture() {
     let fixtures: [(Decimal, String)] = [
