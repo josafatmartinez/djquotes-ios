@@ -6,6 +6,7 @@ struct ProfilePickerView: View {
     @State private var profiles: [Profile] = []
     @State private var isLoading = true
     @State private var showCreateFirst = false
+    @State private var selectedProfileForPin: Profile?
 
     var body: some View {
         VStack(spacing: 24) {
@@ -31,7 +32,9 @@ struct ProfilePickerView: View {
             } else {
                 VStack(spacing: 12) {
                     ForEach(profiles) { profile in
-                        NavigationLink(value: profile) {
+                        Button {
+                            selectedProfileForPin = profile
+                        } label: {
                             HStack {
                                 Image(systemName: profile.isActive ? "person.circle.fill" : "person.circle")
                                     .font(.title2).foregroundStyle(profile.isActive ? .primary : .secondary)
@@ -61,6 +64,9 @@ struct ProfilePickerView: View {
                 auth.switchProfile(to: profile)
                 showCreateFirst = false
             }
+        }
+        .sheet(item: $selectedProfileForPin) { profile in
+            PinEntryView(profile: profile)
         }
     }
 }

@@ -3,18 +3,14 @@ import SwiftUI
 
 struct AuthGateView: View {
     @Environment(AuthManager.self) private var auth
-    @State private var path = NavigationPath()
 
     var body: some View {
-        NavigationStack(path: $path) {
-            Group {
+        Group {
             if auth.isAuthenticated, let profile = auth.currentProfile {
                 MainTabView(profile: profile)
             } else {
                 ProfilePickerView()
             }
-            }
-            .navigationDestination(for: Profile.self) { PinEntryView(profile: $0) }
         }
     }
 }

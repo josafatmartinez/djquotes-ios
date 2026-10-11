@@ -80,7 +80,7 @@ struct CatalogRowView: View {
     }
 }
 
-extension CatalogItemType: CaseIterable {
+extension CatalogItemType: @retroactive CaseIterable {
     public static var allCases: [CatalogItemType] = [.service, .equipment, .accessory, .extra, .consumable]
     var displayName: String {
         switch self {
