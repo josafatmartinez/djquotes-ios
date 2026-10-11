@@ -1,468 +1,379 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>archiveVersion</key>
-	<string>1</string>
-	<key>classes</key>
-	<dict/>
-	<key>objectVersion</key>
-	<string>60</string>
-	<key>objects</key>
-	<dict>
-		<key>043570933433CA326524CEA2</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>08277FB96BA2BBA5C1BEB2FB</string>
-				<string>D1C4BFDC61CD77EBBDDE2608</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>05E901B65891B3A5453AD7D5</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>2368EDDA731B07126E453375</string>
-				<string>5E1FF343DBC00D668D141A17</string>
-				<string>1749C12813CE3F1DA02FFA56</string>
-				<string>2F331E443544812D9AD5136A</string>
-				<string>CBA066732C8B1A40C1E37FDE</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>App</string>
-			<key>path</key>
-			<string>App</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>08277FB96BA2BBA5C1BEB2FB</key>
-		<dict>
-			<key>fileRef</key>
-			<string>2368EDDA731B07126E453375</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>1749C12813CE3F1DA02FFA56</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.json.xcstrings</string>
-			<key>path</key>
-			<string>Sources/App/Resources/Localizable.xcstrings</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>2368EDDA731B07126E453375</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>Sources/App/DJQuotesApp.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>2A9AA167B3B201194DE6E7AD</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>B29A8E32A5F1AE9C90C257A2</string>
-			</array>
-			<key>isa</key>
-			<string>PBXResourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>2F331E443544812D9AD5136A</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>Info.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>43BEAD709A49E54AC3E50A13</key>
-		<dict>
-			<key>isa</key>
-			<string>XCSwiftPackageProductDependency</string>
-			<key>productName</key>
-			<string>DJQuotesDatabase</string>
-		</dict>
-		<key>567BD90C08C8978046C20C96</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>D2B8B3C1D436329E8736E83A</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Products</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>5E1FF343DBC00D668D141A17</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>Sources/App/ContentView.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>6ACF8ADCDC7FF801BF507B6F</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>B607ACE223A725B7A54F16D4</string>
-			<key>buildPhases</key>
-			<array>
-				<string>043570933433CA326524CEA2</string>
-				<string>2A9AA167B3B201194DE6E7AD</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>DJQuotes</string>
-			<key>packageProductDependencies</key>
-			<array>
-				<string>43BEAD709A49E54AC3E50A13</string>
-				<string>F93F18C8C00114BCE7F3A8C2</string>
-				<string>E69419D7B2A4A2898DE8A976</string>
-				<string>B73675869230847B2A91AE57</string>
-			</array>
-			<key>productName</key>
-			<string>DJQuotes</string>
-			<key>productReference</key>
-			<string>D2B8B3C1D436329E8736E83A</string>
-			<key>productType</key>
-			<string>com.apple.product-type.application</string>
-		</dict>
-		<key>6D128B35CCD7D59BC7DC338C</key>
-		<dict>
-			<key>isa</key>
-			<string>XCLocalSwiftPackageReference</string>
-			<key>relativePath</key>
-			<string>Packages/DJQuotesDomain</string>
-		</dict>
-		<key>7D1E1C4B2D6E37F5F4270055</key>
-		<dict>
-			<key>isa</key>
-			<string>XCRemoteSwiftPackageReference</string>
-			<key>repositoryURL</key>
-			<string>https://github.com/groue/GRDB.swift</string>
-			<key>requirement</key>
-			<dict>
-				<key>kind</key>
-				<string>upToNextMajorVersion</string>
-				<key>minimumVersion</key>
-				<string>7.0.0</string>
-			</dict>
-		</dict>
-		<key>88123FA809F51114CCE512BC</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>05E901B65891B3A5453AD7D5</string>
-				<string>8E60D6B8D98A439A4959BF18</string>
-				<string>567BD90C08C8978046C20C96</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>8E60B5732743523FD6F58434</key>
-		<dict>
-			<key>isa</key>
-			<string>XCLocalSwiftPackageReference</string>
-			<key>relativePath</key>
-			<string>Packages/DJQuotesPDF</string>
-		</dict>
-		<key>8E60D6B8D98A439A4959BF18</key>
-		<dict>
-			<key>children</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Packages</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>9FAD3F57118A8954212781ED</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
-				<string></string>
-				<key>CODE_SIGN_ENTITLEMENTS</key>
-				<string>App/DJQuotes.entitlements</string>
-				<key>CODE_SIGN_STYLE</key>
-				<string>Automatic</string>
-				<key>CURRENT_PROJECT_VERSION</key>
-				<string>1</string>
-				<key>DEVELOPMENT_TEAM</key>
-				<string>DM4FD3PCWX</string>
-				<key>ENABLE_PREVIEWS</key>
-				<string>YES</string>
-				<key>ENABLE_USER_SCRIPT_SANDBOXING</key>
-				<string>NO</string>
-				<key>GENERATE_INFOPLIST_FILE</key>
-				<string>YES</string>
-				<key>INFOPLIST_FILE</key>
-				<string>App/Info.plist</string>
-				<key>INFOPLIST_KEY_UIApplicationSceneManifest_Generation</key>
-				<string>YES</string>
-				<key>INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents</key>
-				<string>YES</string>
-				<key>INFOPLIST_KEY_UILaunchScreen_Generation</key>
-				<string>YES</string>
-				<key>INFOPLIST_KEY_UISupportedInterfaceOrientations</key>
-				<string>portrait</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>18.0</string>
-				<key>MARKETING_VERSION</key>
-				<string>1.0</string>
-				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
-				<string>com.josafatmartinez.djquotes</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>SDKROOT</key>
-				<string>auto</string>
-				<key>SUPPORTED_PLATFORMS</key>
-				<string>iphoneos iphonesimulator</string>
-				<key>SWIFT_COMPILATION_MODE</key>
-				<string>wholemodule</string>
-				<key>SWIFT_EMIT_LOC_STRINGS</key>
-				<string>YES</string>
-				<key>SWIFT_OPTIMIZATION_LEVEL</key>
-				<string>-O</string>
-				<key>SWIFT_VERSION</key>
-				<string>6.0</string>
-				<key>TARGETED_DEVICE_FAMILY</key>
-				<string>1,2</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>B29A8E32A5F1AE9C90C257A2</key>
-		<dict>
-			<key>fileRef</key>
-			<string>1749C12813CE3F1DA02FFA56</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B607ACE223A725B7A54F16D4</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>C56E835A1B8D49F900556FE3</string>
-				<string>9FAD3F57118A8954212781ED</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>B73675869230847B2A91AE57</key>
-		<dict>
-			<key>isa</key>
-			<string>XCSwiftPackageProductDependency</string>
-			<key>productName</key>
-			<string>GRDB</string>
-		</dict>
-		<key>C56E835A1B8D49F900556FE3</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
-				<string></string>
-				<key>CODE_SIGN_ENTITLEMENTS</key>
-				<string>App/DJQuotes.entitlements</string>
-				<key>CODE_SIGN_STYLE</key>
-				<string>Automatic</string>
-				<key>CURRENT_PROJECT_VERSION</key>
-				<string>1</string>
-				<key>DEVELOPMENT_TEAM</key>
-				<string>DM4FD3PCWX</string>
-				<key>ENABLE_PREVIEWS</key>
-				<string>YES</string>
-				<key>ENABLE_USER_SCRIPT_SANDBOXING</key>
-				<string>NO</string>
-				<key>GENERATE_INFOPLIST_FILE</key>
-				<string>YES</string>
-				<key>INFOPLIST_FILE</key>
-				<string>App/Info.plist</string>
-				<key>INFOPLIST_KEY_UIApplicationSceneManifest_Generation</key>
-				<string>YES</string>
-				<key>INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents</key>
-				<string>YES</string>
-				<key>INFOPLIST_KEY_UILaunchScreen_Generation</key>
-				<string>YES</string>
-				<key>INFOPLIST_KEY_UISupportedInterfaceOrientations</key>
-				<string>portrait</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>18.0</string>
-				<key>MARKETING_VERSION</key>
-				<string>1.0</string>
-				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
-				<string>com.josafatmartinez.djquotes</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>SDKROOT</key>
-				<string>auto</string>
-				<key>SUPPORTED_PLATFORMS</key>
-				<string>iphoneos iphonesimulator</string>
-				<key>SWIFT_ACTIVE_COMPILATION_CONDITIONS</key>
-				<string>DEBUG</string>
-				<key>SWIFT_EMIT_LOC_STRINGS</key>
-				<string>YES</string>
-				<key>SWIFT_OPTIMIZATION_LEVEL</key>
-				<string>-Onone</string>
-				<key>SWIFT_VERSION</key>
-				<string>6.0</string>
-				<key>TARGETED_DEVICE_FAMILY</key>
-				<string>1,2</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>C7CE7E5AB7012F9CA7654BE8</key>
-		<dict>
-			<key>isa</key>
-			<string>XCLocalSwiftPackageReference</string>
-			<key>relativePath</key>
-			<string>Packages/DJQuotesDatabase</string>
-		</dict>
-		<key>CBA066732C8B1A40C1E37FDE</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.entitlements</string>
-			<key>path</key>
-			<string>DJQuotes.entitlements</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>D1C4BFDC61CD77EBBDDE2608</key>
-		<dict>
-			<key>fileRef</key>
-			<string>5E1FF343DBC00D668D141A17</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>D2B8B3C1D436329E8736E83A</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.application</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>DJQuotes.app</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>E69419D7B2A4A2898DE8A976</key>
-		<dict>
-			<key>isa</key>
-			<string>XCSwiftPackageProductDependency</string>
-			<key>productName</key>
-			<string>DJQuotesPDF</string>
-		</dict>
-		<key>F08CEDE46013233ED0835EBB</key>
-		<dict>
-			<key>attributes</key>
-			<dict>
-				<key>BuildIndependentTargetsInParallel</key>
-				<string>1</string>
-				<key>LastSwiftUpdateCheck</key>
-				<string>2600</string>
-				<key>LastUpgradeCheck</key>
-				<string>2600</string>
-				<key>TargetAttributes</key>
-				<dict>
-					<key>6ACF8ADCDC7FF801BF507B6F</key>
-					<dict>
-						<key>CreatedOnToolsVersion</key>
-						<string>26.0</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>buildConfigurationList</key>
-			<string>B607ACE223A725B7A54F16D4</string>
-			<key>compatibilityVersion</key>
-			<string>Xcode 15.0</string>
-			<key>developmentRegion</key>
-			<string>en</string>
-			<key>hasScannedForEncodings</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXProject</string>
-			<key>knownRegions</key>
-			<array>
-				<string>en</string>
-				<string>es</string>
-				<string>Base</string>
-			</array>
-			<key>mainGroup</key>
-			<string>88123FA809F51114CCE512BC</string>
-			<key>packageReferences</key>
-			<array>
-				<string>C7CE7E5AB7012F9CA7654BE8</string>
-				<string>6D128B35CCD7D59BC7DC338C</string>
-				<string>8E60B5732743523FD6F58434</string>
-				<string>7D1E1C4B2D6E37F5F4270055</string>
-			</array>
-			<key>productRefGroup</key>
-			<string>567BD90C08C8978046C20C96</string>
-			<key>projectDirPath</key>
-			<string></string>
-			<key>projectRoot</key>
-			<string></string>
-			<key>targets</key>
-			<array>
-				<string>6ACF8ADCDC7FF801BF507B6F</string>
-			</array>
-		</dict>
-		<key>F93F18C8C00114BCE7F3A8C2</key>
-		<dict>
-			<key>isa</key>
-			<string>XCSwiftPackageProductDependency</string>
-			<key>productName</key>
-			<string>DJQuotesDomain</string>
-		</dict>
-	</dict>
-	<key>rootObject</key>
-	<string>F08CEDE46013233ED0835EBB</string>
-</dict>
-</plist>
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 110;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		802036C6307B3E8C00D9B615 /* DJQuotesDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 802036C5307B3E8C00D9B615 /* DJQuotesDatabase */; };
+		802036C9307B3EA800D9B615 /* DJQuotesDomain in Frameworks */ = {isa = PBXBuildFile; productRef = 802036C8307B3EA800D9B615 /* DJQuotesDomain */; };
+		802036CC307B3EC700D9B615 /* DJQuotesPDF in Frameworks */ = {isa = PBXBuildFile; productRef = 802036CB307B3EC700D9B615 /* DJQuotesPDF */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		80E23786307B3B4100835EBD /* DJQuotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DJQuotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		80E23788307B3B4100835EBD /* App/Sources/App */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = App/Sources/App;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		80E23783307B3B4100835EBD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			files = (
+				802036C6307B3E8C00D9B615 /* DJQuotesDatabase in Frameworks */,
+				802036CC307B3EC700D9B615 /* DJQuotesPDF in Frameworks */,
+				802036C9307B3EA800D9B615 /* DJQuotesDomain in Frameworks */,
+			);
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		80E2377D307B3B4100835EBD = {
+			isa = PBXGroup;
+			children = (
+				80E23788307B3B4100835EBD /* App/Sources/App */,
+				80E23787307B3B4100835EBD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		80E23787307B3B4100835EBD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				80E23786307B3B4100835EBD /* DJQuotes.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		80E23785307B3B4100835EBD /* DJQuotes */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 80E23791307B3B4400835EBD /* Build configuration list for PBXNativeTarget "DJQuotes" */;
+			buildPhases = (
+				80E23782307B3B4100835EBD /* Sources */,
+				80E23783307B3B4100835EBD /* Frameworks */,
+				80E23784307B3B4100835EBD /* Resources */,
+			);
+			buildRules = (
+			);
+			fileSystemSynchronizedGroups = (
+				80E23788307B3B4100835EBD /* App/Sources/App */,
+			);
+			name = DJQuotes;
+			packageProductDependencies = (
+				802036C5307B3E8C00D9B615 /* DJQuotesDatabase */,
+				802036C8307B3EA800D9B615 /* DJQuotesDomain */,
+				802036CB307B3EC700D9B615 /* DJQuotesPDF */,
+			);
+			productName = DJQuotes;
+			productReference = 80E23786307B3B4100835EBD /* DJQuotes.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		80E2377E307B3B4100835EBD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2700;
+				LastUpgradeCheck = 2700;
+				TargetAttributes = {
+					80E23785307B3B4100835EBD = {
+						CreatedOnToolsVersion = 27.0;
+					};
+				};
+			};
+			buildConfigurationList = 80E23781307B3B4100835EBD /* Build configuration list for PBXProject "DJQuotes" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 80E2377D307B3B4100835EBD;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				802036C4307B3E8C00D9B615 /* XCLocalSwiftPackageReference "Packages/DJQuotesDatabase" */,
+				802036C7307B3EA800D9B615 /* XCLocalSwiftPackageReference "Packages/DJQuotesDomain" */,
+				802036CA307B3EC700D9B615 /* XCLocalSwiftPackageReference "Packages/DJQuotesPDF" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 80E23787307B3B4100835EBD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				80E23785307B3B4100835EBD /* DJQuotes */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		80E23784307B3B4100835EBD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			files = (
+			);
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		80E23782307B3B4100835EBD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			files = (
+			);
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		80E2378F307B3B4400835EBD /* Debug configuration for PBXProject "DJQuotes" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = App/DJQuotes.entitlements;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = DM4FD3PCWX;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		80E23790307B3B4400835EBD /* Release configuration for PBXProject "DJQuotes" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = App/DJQuotes.entitlements;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = DM4FD3PCWX;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		80E23792307B3B4400835EBD /* Debug configuration for PBXNativeTarget "DJQuotes" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = App/DJQuotes.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DM4FD3PCWX;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.josafatmartinez.djquotes;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		80E23793307B3B4400835EBD /* Release configuration for PBXNativeTarget "DJQuotes" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = App/DJQuotes.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DM4FD3PCWX;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.josafatmartinez.djquotes;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		80E23781307B3B4100835EBD /* Build configuration list for PBXProject "DJQuotes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				80E2378F307B3B4400835EBD /* Debug configuration for PBXProject "DJQuotes" */,
+				80E23790307B3B4400835EBD /* Release configuration for PBXProject "DJQuotes" */,
+			);
+			defaultConfigurationName = Release;
+		};
+		80E23791307B3B4400835EBD /* Build configuration list for PBXNativeTarget "DJQuotes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				80E23792307B3B4400835EBD /* Debug configuration for PBXNativeTarget "DJQuotes" */,
+				80E23793307B3B4400835EBD /* Release configuration for PBXNativeTarget "DJQuotes" */,
+			);
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		802036C4307B3E8C00D9B615 /* XCLocalSwiftPackageReference "Packages/DJQuotesDatabase" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/DJQuotesDatabase;
+		};
+		802036C7307B3EA800D9B615 /* XCLocalSwiftPackageReference "Packages/DJQuotesDomain" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/DJQuotesDomain;
+		};
+		802036CA307B3EC700D9B615 /* XCLocalSwiftPackageReference "Packages/DJQuotesPDF" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/DJQuotesPDF;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		802036C5307B3E8C00D9B615 /* DJQuotesDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DJQuotesDatabase;
+		};
+		802036C8307B3EA800D9B615 /* DJQuotesDomain */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DJQuotesDomain;
+		};
+		802036CB307B3EC700D9B615 /* DJQuotesPDF */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DJQuotesPDF;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 80E2377E307B3B4100835EBD /* Project object */;
+	validationLevel = 1;
+}

@@ -1,7 +1,7 @@
 import Foundation
 import GRDB
 
-enum ProfileRole: String, Codable, DatabaseValueConvertible {
+public enum ProfileRole: String, Codable, DatabaseValueConvertible {
     case admin = "ADMIN"
     case seller = "SELLER"
 }

@@ -18,9 +18,7 @@ let package = Package(
                 .product(name: "DJQuotesPDF", package: "DJQuotesPDF"),
             ],
             path: "App/Sources/App",
-            resources: [
-                .process("Resources")
-            ]
+            resources: [.process("Resources")]
         ),
     ]
 )
