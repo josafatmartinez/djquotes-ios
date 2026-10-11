@@ -1,18 +1,25 @@
 import Foundation
 import GRDB
 
-struct WorkerRole: Codable {
-    var id: String
-    var name: String
-    var defaultCost: String
-    var costType: WorkerCostType
-    var isActive: Bool
+public struct WorkerRole: Codable, Identifiable {
+    public var id: String
+    public var name: String
+    public var defaultCost: String
+    public var costType: WorkerCostType
+    public var isActive: Bool
+    public init(id: String, name: String, defaultCost: String, costType: WorkerCostType, isActive: Bool) {
+        self.id = id
+        self.name = name
+        self.defaultCost = defaultCost
+        self.costType = costType
+        self.isActive = isActive
+    }
 }
 
 extension WorkerRole: FetchableRecord, PersistableRecord {
-    static let databaseTableName = "worker_roles"
+    public static let databaseTableName = "worker_roles"
 
-    enum Columns: String, ColumnExpression {
+    public enum Columns: String, ColumnExpression {
         case id, name, defaultCost, costType, isActive
     }
 }

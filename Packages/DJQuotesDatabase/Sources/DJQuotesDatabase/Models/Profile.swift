@@ -8,6 +8,7 @@ public struct Profile: Codable, Hashable, Identifiable {
     public var pinHash: String
     public var isActive: Bool
     public var createdAt: Date
+
     public init(id: String, name: String, role: ProfileRole, pinHash: String, isActive: Bool, createdAt: Date) {
         self.id = id
         self.name = name

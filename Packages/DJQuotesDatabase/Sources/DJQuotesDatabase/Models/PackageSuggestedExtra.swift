@@ -1,16 +1,23 @@
 import Foundation
 import GRDB
 
-struct PackageSuggestedExtra: Codable {
-    var packageId: String
-    var catalogItemId: String
-    var sortOrder: Int
+public struct PackageSuggestedExtra: Codable, Identifiable {
+    public var packageId: String
+    public var catalogItemId: String
+    public var sortOrder: Int
+
+    public var id: String { "\(packageId)-\(catalogItemId)" }
+    public init(packageId: String, catalogItemId: String, sortOrder: Int) {
+        self.packageId = packageId
+        self.catalogItemId = catalogItemId
+        self.sortOrder = sortOrder
+    }
 }
 
 extension PackageSuggestedExtra: FetchableRecord, PersistableRecord {
-    static let databaseTableName = "package_suggested_extras"
+    public static let databaseTableName = "package_suggested_extras"
 
-    enum Columns: String, ColumnExpression {
+    public enum Columns: String, ColumnExpression {
         case packageId, catalogItemId, sortOrder
     }
 }

@@ -6,7 +6,7 @@ public enum ProfileRole: String, Codable, DatabaseValueConvertible {
     case seller = "SELLER"
 }
 
-enum CatalogItemType: String, Codable, DatabaseValueConvertible {
+public enum CatalogItemType: String, Codable, DatabaseValueConvertible {
     case service = "SERVICE"
     case equipment = "EQUIPMENT"
     case accessory = "ACCESSORY"
@@ -14,13 +14,13 @@ enum CatalogItemType: String, Codable, DatabaseValueConvertible {
     case consumable = "CONSUMABLE"
 }
 
-enum PackagePricingMode: String, Codable, DatabaseValueConvertible {
+public enum PackagePricingMode: String, Codable, DatabaseValueConvertible {
     case automatic = "AUTOMATIC"
     case commercial = "COMMERCIAL"
     case manual = "MANUAL"
 }
 
-enum QuoteStatus: String, Codable, DatabaseValueConvertible {
+public enum QuoteStatus: String, Codable, DatabaseValueConvertible {
     case draft = "DRAFT"
     case sent = "SENT"
     case accepted = "ACCEPTED"
@@ -29,7 +29,7 @@ enum QuoteStatus: String, Codable, DatabaseValueConvertible {
     case cancelled = "CANCELLED"
 }
 
-enum InternalCostType: String, Codable, DatabaseValueConvertible {
+public enum InternalCostType: String, Codable, DatabaseValueConvertible {
     case labor = "LABOR"
     case transport = "TRANSPORT"
     case rental = "RENTAL"
@@ -37,11 +37,11 @@ enum InternalCostType: String, Codable, DatabaseValueConvertible {
     case other = "OTHER"
 }
 
-enum QuoteSourceMode: String, Codable, DatabaseValueConvertible {
+public enum QuoteSourceMode: String, Codable, DatabaseValueConvertible {
     case package = "PACKAGE"
     case scratch = "SCRATCH"
 }
 
-enum WorkerCostType: String, Codable, DatabaseValueConvertible {
+public enum WorkerCostType: String, Codable, DatabaseValueConvertible {
     case perEvent = "PER_EVENT"
 }

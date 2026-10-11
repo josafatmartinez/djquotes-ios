@@ -1,20 +1,29 @@
 import Foundation
 import GRDB
 
-struct Quote: Codable {
-    var id: String
-    var folio: String
-    var customerId: String
-    var createdBy: String
-    var currentVersionId: String?
-    var acceptedVersionId: String?
-    var createdAt: Date
+public struct Quote: Codable, Identifiable {
+    public var id: String
+    public var folio: String
+    public var customerId: String
+    public var createdBy: String
+    public var currentVersionId: String?
+    public var acceptedVersionId: String?
+    public var createdAt: Date
+    public init(id: String, folio: String, customerId: String, createdBy: String, currentVersionId: String?, acceptedVersionId: String?, createdAt: Date) {
+        self.id = id
+        self.folio = folio
+        self.customerId = customerId
+        self.createdBy = createdBy
+        self.currentVersionId = currentVersionId
+        self.acceptedVersionId = acceptedVersionId
+        self.createdAt = createdAt
+    }
 }
 
 extension Quote: FetchableRecord, PersistableRecord {
-    static let databaseTableName = "quotes"
+    public static let databaseTableName = "quotes"
 
-    enum Columns: String, ColumnExpression {
+    public enum Columns: String, ColumnExpression {
         case id, folio, customerId, createdBy, currentVersionId, acceptedVersionId, createdAt
     }
 

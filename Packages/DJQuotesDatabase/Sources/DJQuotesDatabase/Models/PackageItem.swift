@@ -1,20 +1,29 @@
 import Foundation
 import GRDB
 
-struct PackageItem: Codable {
-    var id: String
-    var packageId: String
-    var catalogItemId: String
-    var quantity: String
-    var unitPriceOverride: String?
-    var isOptional: Bool
-    var sortOrder: Int
+public struct PackageItem: Codable, Identifiable {
+    public var id: String
+    public var packageId: String
+    public var catalogItemId: String
+    public var quantity: String
+    public var unitPriceOverride: String?
+    public var isOptional: Bool
+    public var sortOrder: Int
+    public init(id: String, packageId: String, catalogItemId: String, quantity: String, unitPriceOverride: String?, isOptional: Bool, sortOrder: Int) {
+        self.id = id
+        self.packageId = packageId
+        self.catalogItemId = catalogItemId
+        self.quantity = quantity
+        self.unitPriceOverride = unitPriceOverride
+        self.isOptional = isOptional
+        self.sortOrder = sortOrder
+    }
 }
 
 extension PackageItem: FetchableRecord, PersistableRecord {
-    static let databaseTableName = "package_items"
+    public static let databaseTableName = "package_items"
 
-    enum Columns: String, ColumnExpression {
+    public enum Columns: String, ColumnExpression {
         case id, packageId, catalogItemId, quantity, unitPriceOverride, isOptional, sortOrder
     }
 }

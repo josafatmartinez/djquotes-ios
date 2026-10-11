@@ -29,16 +29,19 @@ struct MainTabView: View {
             DashboardView().tabItem { Label(AppTab.dashboard.label, systemImage: AppTab.dashboard.icon) }.tag(AppTab.dashboard)
             CustomerListView().tabItem { Label(AppTab.customers.label, systemImage: AppTab.customers.icon) }.tag(AppTab.customers)
             QuoteListView().tabItem { Label(AppTab.quotes.label, systemImage: AppTab.quotes.icon) }.tag(AppTab.quotes)
-            if profile.role == .admin { CatalogView().tabItem { Label(AppTab.catalog.label, systemImage: AppTab.catalog.icon) }.tag(AppTab.catalog) }
+            if profile.role == .admin {
+                CatalogView().tabItem { Label(AppTab.catalog.label, systemImage: AppTab.catalog.icon) }.tag(AppTab.catalog)
+                PackageListView().tabItem { Label(String(localized: "tab.packages"), systemImage: "shippingbox") }.tag(AppTab.settings)
+            }
             SettingsView().tabItem { Label(AppTab.settings.label, systemImage: AppTab.settings.icon) }.tag(AppTab.settings)
         }
     }
 }
 
 struct DashboardView: View { var body: some View { NavigationStack { ContentUnavailableView("tab.dashboard", systemImage: "rectangle.grid.1x2", description: Text("Coming soon")).navigationTitle("tab.dashboard") } } }
-struct CustomerListView: View { var body: some View { NavigationStack { ContentUnavailableView("tab.customers", systemImage: "person.2", description: Text("Coming soon")).navigationTitle("tab.customers") } } }
+struct CustomerListView: View { var body: some View { CustomerListFullView() } }
 struct QuoteListView: View { var body: some View { NavigationStack { ContentUnavailableView("tab.quotes", systemImage: "doc.text", description: Text("Coming soon")).navigationTitle("tab.quotes") } } }
-struct CatalogView: View { var body: some View { NavigationStack { ContentUnavailableView("tab.catalog", systemImage: "square.grid.2x2", description: Text("Coming soon")).navigationTitle("tab.catalog") } } }
+struct CatalogView: View { var body: some View { CatalogListView() } }
 
 struct SettingsView: View {
     @Environment(AuthManager.self) private var auth
@@ -50,6 +53,9 @@ struct SettingsView: View {
                         HStack { Text(p.name); Spacer(); Text(p.role == .admin ? String(localized: "role.admin") : String(localized: "role.seller")).foregroundStyle(.secondary) }
                     }
                     NavigationLink(String(localized: "auth.profiles")) { ProfileListView() }
+                    if auth.currentProfile?.role == .admin {
+                        NavigationLink(String(localized: "settings.workerRoles")) { WorkerRolesView() }
+                    }
                 }
                 Section { Button(role: .destructive) { auth.logout() } label: { Text("auth.logout") } }
             }

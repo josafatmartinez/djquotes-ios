@@ -36,6 +36,6 @@ public final class DatabaseManager: @unchecked Sendable {
     }
 }
 
-enum DatabaseError: Error {
+public enum DatabaseError: Error {
     case notInitialized
 }

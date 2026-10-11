@@ -1,47 +1,78 @@
 import Foundation
 import GRDB
 
-struct QuoteVersion: Codable {
-    var id: String
-    var quoteId: String
-    var versionNumber: Int
-    var status: QuoteStatus
-    var sourceMode: QuoteSourceMode?
-    var sourcePackageId: String?
+public struct QuoteVersion: Codable, Identifiable {
+    public var id: String
+    public var quoteId: String
+    public var versionNumber: Int
+    public var status: QuoteStatus
+    public var sourceMode: QuoteSourceMode?
+    public var sourcePackageId: String?
 
-    var eventDate: Date?
-    var eventName: String?
-    var eventLocation: String?
-    var travelCharge: String
-    var travelConfirmedAmount: String?
-    var travelConfirmedLocation: String?
+    public var eventDate: Date?
+    public var eventName: String?
+    public var eventLocation: String?
+    public var travelCharge: String
+    public var travelConfirmedAmount: String?
+    public var travelConfirmedLocation: String?
 
-    var subtotal: String
-    var discount: String
-    var total: String
-    var depositAmount: String
-    var balance: String
+    public var subtotal: String
+    public var discount: String
+    public var total: String
+    public var depositAmount: String
+    public var balance: String
 
-    var customerNameSnapshot: String?
-    var customerPhoneSnapshot: String?
-    var customerEmailSnapshot: String?
-    var packageNameSnapshot: String?
-    var packagePriceSnapshot: String?
+    public var customerNameSnapshot: String?
+    public var customerPhoneSnapshot: String?
+    public var customerEmailSnapshot: String?
+    public var packageNameSnapshot: String?
+    public var packagePriceSnapshot: String?
 
-    var customerNotes: String?
-    var internalNotes: String?
+    public var customerNotes: String?
+    public var internalNotes: String?
 
-    var locked: Bool
-    var lockVersion: Int
-    var createdBy: String
-    var createdAt: Date
-    var sentAt: Date?
+    public var locked: Bool
+    public var lockVersion: Int
+    public var createdBy: String
+    public var createdAt: Date
+    public var sentAt: Date?
+    public init(id: String, quoteId: String, versionNumber: Int, status: QuoteStatus, sourceMode: QuoteSourceMode?, sourcePackageId: String?, eventDate: Date?, eventName: String?, eventLocation: String?, travelCharge: String, travelConfirmedAmount: String?, travelConfirmedLocation: String?, subtotal: String, discount: String, total: String, depositAmount: String, balance: String, customerNameSnapshot: String?, customerPhoneSnapshot: String?, customerEmailSnapshot: String?, packageNameSnapshot: String?, packagePriceSnapshot: String?, customerNotes: String?, internalNotes: String?, locked: Bool, lockVersion: Int, createdBy: String, createdAt: Date, sentAt: Date?) {
+        self.id = id
+        self.quoteId = quoteId
+        self.versionNumber = versionNumber
+        self.status = status
+        self.sourceMode = sourceMode
+        self.sourcePackageId = sourcePackageId
+        self.eventDate = eventDate
+        self.eventName = eventName
+        self.eventLocation = eventLocation
+        self.travelCharge = travelCharge
+        self.travelConfirmedAmount = travelConfirmedAmount
+        self.travelConfirmedLocation = travelConfirmedLocation
+        self.subtotal = subtotal
+        self.discount = discount
+        self.total = total
+        self.depositAmount = depositAmount
+        self.balance = balance
+        self.customerNameSnapshot = customerNameSnapshot
+        self.customerPhoneSnapshot = customerPhoneSnapshot
+        self.customerEmailSnapshot = customerEmailSnapshot
+        self.packageNameSnapshot = packageNameSnapshot
+        self.packagePriceSnapshot = packagePriceSnapshot
+        self.customerNotes = customerNotes
+        self.internalNotes = internalNotes
+        self.locked = locked
+        self.lockVersion = lockVersion
+        self.createdBy = createdBy
+        self.createdAt = createdAt
+        self.sentAt = sentAt
+    }
 }
 
 extension QuoteVersion: FetchableRecord, PersistableRecord {
-    static let databaseTableName = "quote_versions"
+    public static let databaseTableName = "quote_versions"
 
-    enum Columns: String, ColumnExpression {
+    public enum Columns: String, ColumnExpression {
         case id, quoteId, versionNumber, status, sourceMode, sourcePackageId
         case eventDate, eventName, eventLocation
         case travelCharge, travelConfirmedAmount, travelConfirmedLocation
