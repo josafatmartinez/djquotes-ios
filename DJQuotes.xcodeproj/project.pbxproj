@@ -107,7 +107,7 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.swift</string>
 			<key>path</key>
-			<string>ContentView.swift</string>
+			<string>Sources/App/ContentView.swift</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -125,7 +125,7 @@
 			<key>lastKnownFileType</key>
 			<string>text.json.xcstrings</string>
 			<key>path</key>
-			<string>Localizable.xcstrings</string>
+			<string>Sources/App/Resources/Localizable.xcstrings</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -203,8 +203,6 @@
 		</dict>
 		<key>745CEB4EC0C9E408C8A70408</key>
 		<dict>
-			<key>baseConfigurationReference</key>
-			<string>499EE0498EFD6E23DC0C4EFD</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
@@ -212,7 +210,7 @@
 				<key>CODE_SIGN_STYLE</key>
 				<string>Automatic</string>
 				<key>DEVELOPMENT_TEAM</key>
-				<string>DUY74KETG7</string>
+				<string>DM4FD3PCWX</string>
 				<key>ENABLE_PREVIEWS</key>
 				<string>YES</string>
 				<key>ENABLE_USER_SCRIPT_SANDBOXING</key>
@@ -226,9 +224,9 @@
 				<key>PRODUCT_NAME</key>
 				<string>DJQuotes</string>
 				<key>SDKROOT</key>
-				<string>iphoneos</string>
+				<string>auto</string>
 				<key>SUPPORTED_PLATFORMS</key>
-				<string>iphoneos</string>
+				<string>iphoneos iphonesimulator</string>
 				<key>SWIFT_COMPILATION_MODE</key>
 				<string>wholemodule</string>
 				<key>SWIFT_OPTIMIZATION_LEVEL</key>
@@ -317,7 +315,7 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.swift</string>
 			<key>path</key>
-			<string>DJQuotesApp.swift</string>
+			<string>Sources/App/DJQuotesApp.swift</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -360,8 +358,6 @@
 		</dict>
 		<key>D38150AF3769EB431E852065</key>
 		<dict>
-			<key>baseConfigurationReference</key>
-			<string>499EE0498EFD6E23DC0C4EFD</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
@@ -369,7 +365,7 @@
 				<key>CODE_SIGN_STYLE</key>
 				<string>Automatic</string>
 				<key>DEVELOPMENT_TEAM</key>
-				<string>DUY74KETG7</string>
+				<string>DM4FD3PCWX</string>
 				<key>ENABLE_PREVIEWS</key>
 				<string>YES</string>
 				<key>ENABLE_USER_SCRIPT_SANDBOXING</key>
@@ -383,9 +379,9 @@
 				<key>PRODUCT_NAME</key>
 				<string>DJQuotes</string>
 				<key>SDKROOT</key>
-				<string>iphoneos</string>
+				<string>auto</string>
 				<key>SUPPORTED_PLATFORMS</key>
-				<string>iphoneos</string>
+				<string>iphoneos iphonesimulator</string>
 				<key>SWIFT_ACTIVE_COMPILATION_CONDITIONS</key>
 				<string>DEBUG</string>
 				<key>SWIFT_OPTIMIZATION_LEVEL</key>
