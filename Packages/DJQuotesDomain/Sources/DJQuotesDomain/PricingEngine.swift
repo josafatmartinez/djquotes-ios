@@ -1,14 +1,14 @@
 import Foundation
 
-struct PricingEngine {
-    static func calculateSubtotal(items: [(unitPrice: Money, quantity: Int)]) -> Money {
+public struct PricingEngine {
+    public static func calculateSubtotal(items: [(unitPrice: Money, quantity: Int)]) -> Money {
         items.reduce(Money.zero) { subtotal, item in
             let lineTotal = item.unitPrice * item.quantity
             return subtotal + lineTotal
         }
     }
 
-    static func calculateTotal(
+    public static func calculateTotal(
         subtotal: Money,
         extrasSubtotal: Money,
         travelCharge: Money,
@@ -20,11 +20,11 @@ struct PricingEngine {
         return discountable + travelCharge - roundedDiscount
     }
 
-    static func calculateBalance(total: Money, depositAmount: Money) -> Money {
+    public static func calculateBalance(total: Money, depositAmount: Money) -> Money {
         total - depositAmount
     }
 
-    static func calculateProfit(
+    public static func calculateProfit(
         income: Money,
         costItems: [(unitCost: Money, quantity: Int)],
         installerCount: Int,
@@ -37,7 +37,7 @@ struct PricingEngine {
         return income - totalCosts - installerCost
     }
 
-    static func calculateDiscountAmount(
+    public static func calculateDiscountAmount(
         base: Money,
         discountRate: Decimal
     ) -> Money {

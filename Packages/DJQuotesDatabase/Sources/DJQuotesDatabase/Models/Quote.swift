@@ -1,7 +1,7 @@
 import Foundation
 import GRDB
 
-public struct Quote: Codable, Identifiable {
+public struct Quote: Codable, Hashable, Identifiable {
     public var id: String
     public var folio: String
     public var customerId: String

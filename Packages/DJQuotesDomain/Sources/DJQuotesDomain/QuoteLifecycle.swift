@@ -1,38 +1,29 @@
 import Foundation
 
-enum QuoteLifecycle {
-    private static let transitions: [QuoteStatus: Set<QuoteStatus>] = [
-        .draft: [.sent, .cancelled],
-        .sent: [.accepted, .rejected, .expired, .cancelled],
-        .accepted: [],
-        .rejected: [],
-        .expired: [],
-        .cancelled: [],
+public enum QuoteLifecycle {
+    nonisolated(unsafe) private static let transitions: [String: Set<String>] = [
+        "DRAFT": ["SENT", "CANCELLED"],
+        "SENT": ["ACCEPTED", "REJECTED", "EXPIRED", "CANCELLED"],
+        "ACCEPTED": [],
+        "REJECTED": [],
+        "EXPIRED": [],
+        "CANCELLED": [],
     ]
 
-    static func canTransition(from current: QuoteStatus, to target: QuoteStatus) -> Bool {
+    public static func canTransition(from current: String, to target: String) -> Bool {
         guard let allowed = transitions[current] else { return false }
         return allowed.contains(target)
     }
 
-    static func isTerminal(_ status: QuoteStatus) -> Bool {
-        status != .draft && status != .sent
+    public static func isTerminal(_ status: String) -> Bool {
+        status != "DRAFT" && status != "SENT"
     }
 
-    static func isEditable(_ status: QuoteStatus) -> Bool {
-        status == .draft
+    public static func isEditable(_ status: String) -> Bool {
+        status == "DRAFT"
     }
 
-    static func isImmutable(_ status: QuoteStatus) -> Bool {
-        status != .draft
+    public static func isImmutable(_ status: String) -> Bool {
+        status != "DRAFT"
     }
-}
-
-enum QuoteStatus: String, Codable, CaseIterable {
-    case draft = "DRAFT"
-    case sent = "SENT"
-    case accepted = "ACCEPTED"
-    case rejected = "REJECTED"
-    case expired = "EXPIRED"
-    case cancelled = "CANCELLED"
 }

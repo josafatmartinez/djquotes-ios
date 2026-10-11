@@ -36,7 +36,7 @@ struct MainTabView: View {
 
 struct DashboardView: View { var body: some View { NavigationStack { ContentUnavailableView("tab.dashboard", systemImage: "rectangle.grid.1x2", description: Text("Coming soon")).navigationTitle("tab.dashboard") } } }
 struct CustomerListView: View { var body: some View { CustomerListFullView() } }
-struct QuoteListView: View { var body: some View { NavigationStack { ContentUnavailableView("tab.quotes", systemImage: "doc.text", description: Text("Coming soon")).navigationTitle("tab.quotes") } } }
+struct QuoteListView: View { var body: some View { QuoteListFullView() } }
 struct CatalogView: View { var body: some View { CatalogListView() } }
 
 struct SettingsView: View {
