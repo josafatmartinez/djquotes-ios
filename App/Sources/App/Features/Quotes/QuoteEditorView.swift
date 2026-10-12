@@ -286,7 +286,40 @@ struct StepSummary: View {
                     ? String(localized: "quote.source.scratch")
                     : vm.selectedPackage?.name ?? "-")
                 LabeledContent(String(localized: "quote.items"), value: "\(vm.wizardItems.count + vm.wizardExtras.count)")
-                LabeledContent(String(localized: "quote.total"), value: vm.quotedTotal.formatted()).fontWeight(.bold)
+            }
+
+            Section {
+                VStack(spacing: 12) {
+                    HStack {
+                        Text(String(localized: "quote.subtotal"))
+                        Spacer()
+                        Text(vm.subtotal.formatted())
+                            .foregroundStyle(.secondary)
+                    }
+                    HStack {
+                        Text(String(localized: "quote.extrasSubtotal"))
+                        Spacer()
+                        Text(vm.extrasSubtotal.formatted())
+                            .foregroundStyle(.secondary)
+                    }
+                    HStack {
+                        Text(String(localized: "quote.discount"))
+                        Spacer()
+                        Text("-\(PricingEngine.calculateDiscountAmount(base: vm.subtotal + vm.extrasSubtotal, discountRate: Decimal(string: vm.discountRate) ?? .zero).formatted())")
+                            .foregroundStyle(.red)
+                    }
+                    Divider()
+                    HStack {
+                        Text(String(localized: "quote.total"))
+                            .fontWeight(.bold)
+                        Spacer()
+                        Text(vm.quotedTotal.formatted())
+                            .font(.title3)
+                            .fontWeight(.bold)
+                            .foregroundStyle(.green)
+                    }
+                }
+                .padding(.vertical, 4)
             }
 
             Section(String(localized: "quote.notes")) {

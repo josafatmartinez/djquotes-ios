@@ -46,6 +46,7 @@ enum QuoteWizardStep: Int, CaseIterable {
 @Observable
 final class QuoteViewModel {
     var quotes: [Quote] = []
+    var quoteStatusMap: [String: QuoteStatus] = [:]
     var isLoading = false
     var error: String?
 
@@ -118,6 +119,17 @@ final class QuoteViewModel {
             quotes = try await DatabaseManager.shared.read { db in
                 try Quote.order(Column("createdAt").desc).fetchAll(db)
             }
+            var map: [String: QuoteStatus] = [:]
+            for q in quotes {
+                if let versionId = q.currentVersionId {
+                    if let version: QuoteVersion = try? await DatabaseManager.shared.read({ db in
+                        try QuoteVersion.fetchOne(db, key: versionId)
+                    }) {
+                        map[q.id] = version.status
+                    }
+                }
+            }
+            quoteStatusMap = map
         } catch {
             self.error = error.localizedDescription
         }

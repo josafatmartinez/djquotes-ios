@@ -15,7 +15,7 @@ public enum PackagePricingMode: String, Codable, DatabaseValueConvertible {
     case manual = "MANUAL"
 }
 
-public enum QuoteStatus: String, Codable, DatabaseValueConvertible {
+public enum QuoteStatus: String, Codable, DatabaseValueConvertible, CaseIterable {
     case draft = "DRAFT"
     case sent = "SENT"
     case accepted = "ACCEPTED"

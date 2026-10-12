@@ -81,17 +81,17 @@ struct QuoteDetailView: View {
                     Section {
                         switch version.status {
                         case .draft:
-                            Button(String(localized: "quote.send")) { Task { await vm.changeStatus(quote: quote, version: version, to: .sent) } }
+                            Button(String(localized: "quote.send")) { Task { await vm.changeStatus(quote: quote, version: version, to: .sent); await load() } }
                             Button(role: .destructive) { Task { await vm.cancelQuote(quote) } } label: { Text(String(localized: "quote.cancel")) }
 
                         case .sent:
-                            Button(String(localized: "quote.accept")) { Task { await vm.changeStatus(quote: quote, version: version, to: .accepted) } }
-                            Button(String(localized: "quote.reject")) { Task { await vm.changeStatus(quote: quote, version: version, to: .rejected) } }
+                            Button(String(localized: "quote.accept")) { Task { await vm.changeStatus(quote: quote, version: version, to: .accepted); await load() } }
+                            Button(String(localized: "quote.reject")) { Task { await vm.changeStatus(quote: quote, version: version, to: .rejected); await load() } }
 
                         default:
                             if !QuoteLifecycle.isTerminal(version.status.rawValue) || version.status == .accepted {
                                 Button(String(localized: "quote.revise")) {
-                                    Task { await vm.createRevision(quote: quote, version: version, createdBy: auth.currentProfile?.id ?? "") }
+                                    Task { await vm.createRevision(quote: quote, version: version, createdBy: auth.currentProfile?.id ?? ""); await load() }
                                 }
                             }
                         }
