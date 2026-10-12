@@ -1,0 +1,91 @@
+name: Prepare release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: SemVer release version, for example 1.0.0
+        required: true
+        type: string
+
+permissions:
+  actions: write
+  contents: write
+  pull-requests: write
+
+jobs:
+  prepare:
+    if: github.ref == 'refs/heads/main'
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          fetch-depth: 0
+
+      - name: Validate requested version
+        env:
+          VERSION: ${{ inputs.version }}
+        run: |
+          if [[ ! "$VERSION" =~ ^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$ ]]; then
+            echo "Version must use MAJOR.MINOR.PATCH."
+            exit 1
+          fi
+          current_version=$(grep -m1 'MARKETING_VERSION = ' DJQuotes.xcodeproj/project.pbxproj | sed -E 's/.*= ([^;]+);/\1/')
+          IFS=. read -r requested_major requested_minor requested_patch <<< "$VERSION"
+          IFS=. read -r current_major current_minor current_patch <<< "$current_version"
+          if (( requested_major < current_major || (requested_major == current_major && requested_minor < current_minor) || (requested_major == current_major && requested_minor == current_minor && requested_patch < current_patch) )); then
+            echo "Version must not be lower than $current_version."
+            exit 1
+          fi
+          if git rev-parse -q --verify "refs/tags/v$VERSION" >/dev/null; then
+            echo "Tag v$VERSION already exists."
+            exit 1
+          fi
+
+      - name: Test domain package
+        working-directory: Packages/DJQuotesDomain
+        run: swift test
+
+      - name: Build iOS app
+        run: >-
+          xcodebuild -project DJQuotes.xcodeproj -scheme DJQuotes
+          -configuration Debug -sdk iphonesimulator
+          -destination 'generic/platform=iOS Simulator'
+          CODE_SIGNING_ALLOWED=NO build
+
+      - name: Update version and changelog
+        env:
+          VERSION: ${{ inputs.version }}
+        run: |
+          build_number=$(grep -m1 'CURRENT_PROJECT_VERSION = ' DJQuotes.xcodeproj/project.pbxproj | tr -cd '0-9')
+          next_build=$((build_number + 1))
+          export VERSION next_build
+          perl -0pi -e 's/MARKETING_VERSION = [^;]+;/MARKETING_VERSION = $ENV{VERSION};/g; s/CURRENT_PROJECT_VERSION = [^;]+;/CURRENT_PROJECT_VERSION = $ENV{next_build};/g' DJQuotes.xcodeproj/project.pbxproj
+
+          last_tag=$(git describe --tags --abbrev=0 2>/dev/null || true)
+          range=HEAD
+          if [ -n "$last_tag" ]; then range="$last_tag..HEAD"; fi
+          entry="$RUNNER_TEMP/changelog-entry.md"
+          {
+            printf '\n## [%s] - %s\n' "$VERSION" "$(date +%F)"
+            features=$(git log "$range" --format='%s' | grep -E '^feat(\(.+\))?:' | sed 's/^/- /' || true)
+            fixes=$(git log "$range" --format='%s' | grep -E '^fix(\(.+\))?:' | sed 's/^/- /' || true)
+            if [ -n "$features" ]; then printf '\n### Added\n%s\n' "$features"; fi
+            if [ -n "$fixes" ]; then printf '\n### Fixed\n%s\n' "$fixes"; fi
+          } > "$entry"
+          sed -i '' "/^## \[Unreleased\]$/r $entry" CHANGELOG.md
+
+      - name: Create release pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ inputs.version }}
+        run: |
+          branch="release/v$VERSION"
+          git switch -c "$branch"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add CHANGELOG.md DJQuotes.xcodeproj/project.pbxproj
+          git commit -m "chore(release): $VERSION"
+          git push origin "$branch"
+          gh workflow run ci.yml --ref "$branch"
+          gh pr create --base main --head "$branch" --title "chore(release): $VERSION" --body "Updates app version, build number, and CHANGELOG for v$VERSION."

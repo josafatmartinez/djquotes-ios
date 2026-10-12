@@ -1,0 +1,53 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    name: Publish release
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          fetch-depth: 0
+
+      - name: Validate release tag
+        env:
+          TAG: ${{ github.ref_name }}
+        run: |
+          version="${TAG#v}"
+          if [[ ! "$version" =~ ^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$ ]]; then
+            echo "Tag must use vMAJOR.MINOR.PATCH."
+            exit 1
+          fi
+          app_version=$(grep -m1 'MARKETING_VERSION = ' DJQuotes.xcodeproj/project.pbxproj | sed -E 's/.*= ([^;]+);/\1/')
+          if [ "$version" != "$app_version" ]; then
+            echo "Tag $TAG does not match app version $app_version."
+            exit 1
+          fi
+          tag_commit=$(git rev-list -n1 "$TAG")
+          git fetch origin main
+          git merge-base --is-ancestor "$tag_commit" origin/main
+
+      - name: Test domain package
+        working-directory: Packages/DJQuotesDomain
+        run: swift test
+
+      - name: Build iOS app
+        run: >-
+          xcodebuild -project DJQuotes.xcodeproj -scheme DJQuotes
+          -configuration Release -sdk iphonesimulator
+          -destination 'generic/platform=iOS Simulator'
+          CODE_SIGNING_ALLOWED=NO build
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_name }}
+        run: gh release create "$TAG" --verify-tag --generate-notes --title "$TAG"

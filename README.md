@@ -35,6 +35,13 @@ swift test
 
 Repository is public, so GitHub Free can protect `main` and require CI checks.
 
+## Releases
+
+- App versions use SemVer: `MAJOR.MINOR.PATCH`. Build numbers are increasing integers.
+- Run `Prepare release` from GitHub Actions on `main` with target version. It validates tests and build, updates version and `CHANGELOG.md`, then opens a release PR.
+- Merge release PR after CI passes. Create annotated tag `vMAJOR.MINOR.PATCH` on `main`.
+- Tag workflow validates app version, tests and iOS build, then creates GitHub Release with generated notes.
+
 ## Architecture
 
 ```
