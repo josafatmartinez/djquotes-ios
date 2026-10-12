@@ -6,8 +6,8 @@ struct AuthGateView: View {
 
     var body: some View {
         Group {
-            if auth.isAuthenticated, let profile = auth.currentProfile {
-                MainTabView(profile: profile)
+            if auth.isAuthenticated, auth.currentProfile != nil {
+                MainTabView()
             } else {
                 ProfilePickerView()
             }
@@ -17,7 +17,6 @@ struct AuthGateView: View {
 
 struct MainTabView: View {
     @Environment(AuthManager.self) private var auth
-    let profile: Profile
     @State private var tab = AppTab.dashboard
 
     var body: some View {
@@ -25,9 +24,7 @@ struct MainTabView: View {
             DashboardView().tabItem { Label(AppTab.dashboard.label, systemImage: AppTab.dashboard.icon) }.tag(AppTab.dashboard)
             CustomerListView().tabItem { Label(AppTab.customers.label, systemImage: AppTab.customers.icon) }.tag(AppTab.customers)
             QuoteListView().tabItem { Label(AppTab.quotes.label, systemImage: AppTab.quotes.icon) }.tag(AppTab.quotes)
-            if profile.role == .admin {
-                CatalogView().tabItem { Label(AppTab.catalog.label, systemImage: AppTab.catalog.icon) }.tag(AppTab.catalog)
-            }
+            CatalogView().tabItem { Label(AppTab.catalog.label, systemImage: AppTab.catalog.icon) }.tag(AppTab.catalog)
             SettingsView().tabItem { Label(AppTab.settings.label, systemImage: AppTab.settings.icon) }.tag(AppTab.settings)
         }
     }
@@ -45,13 +42,12 @@ struct SettingsView: View {
             Form {
                 Section {
                     if let p = auth.currentProfile {
-                        HStack { Text(p.name); Spacer(); Text(p.role == .admin ? String(localized: "role.admin") : String(localized: "role.seller")).foregroundStyle(.secondary) }
+                        HStack { Text(p.name); Spacer() }
                     }
                     NavigationLink(String(localized: "auth.profiles")) { ProfileListView() }
-                    if auth.currentProfile?.role == .admin {
-                        NavigationLink(String(localized: "tab.packages")) { PackageListView() }
-                        NavigationLink(String(localized: "settings.workerRoles")) { WorkerRolesView() }
-                    }
+                    NavigationLink(String(localized: "tab.packages")) { PackageListView() }
+                    NavigationLink(String(localized: "settings.workerRoles")) { WorkerRolesView() }
+                    NavigationLink("Sync") { Text("Coming soon") }
                 }
                 Section { Button(role: .destructive) { auth.logout() } label: { Text("auth.logout") } }
             }

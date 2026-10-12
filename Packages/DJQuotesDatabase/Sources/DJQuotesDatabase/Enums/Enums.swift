@@ -1,11 +1,6 @@
 import Foundation
 import GRDB
 
-public enum ProfileRole: String, Codable, DatabaseValueConvertible {
-    case admin = "ADMIN"
-    case seller = "SELLER"
-}
-
 public enum CatalogItemType: String, Codable, DatabaseValueConvertible {
     case service = "SERVICE"
     case equipment = "EQUIPMENT"

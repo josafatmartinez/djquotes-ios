@@ -2,6 +2,7 @@ import GRDB
 import Foundation
 import CryptoKit
 import LocalAuthentication
+import UIKit
 import DJQuotesDatabase
 
 @MainActor
@@ -51,7 +52,7 @@ final class AuthManager {
         } catch { return false }
     }
 
-    func createProfile(name: String, role: ProfileRole, pin: String) async -> Bool {
+    func createProfile(name: String, pin: String) async -> Bool {
         guard pin.count == 4, pin.allSatisfy(\.isNumber) else {
             error = String(localized: "auth.error.invalidPin")
             return false
@@ -60,7 +61,8 @@ final class AuthManager {
             error = String(localized: "auth.error.emptyName")
             return false
         }
-        let profile = Profile(id: UUID().uuidString, name: name.trimmingCharacters(in: .whitespaces), role: role, pinHash: hashPin(pin), isActive: true, createdAt: Date())
+        let deviceId = UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString
+        let profile = Profile(id: UUID().uuidString, name: name.trimmingCharacters(in: .whitespaces), pinHash: hashPin(pin), isActive: true, deviceId: deviceId, deviceName: UIDevice.current.name, createdAt: Date())
         do {
             try await DatabaseManager.shared.write { db in try profile.insert(db) }
             error = nil

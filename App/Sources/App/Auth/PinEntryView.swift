@@ -15,24 +15,17 @@ struct PinEntryView: View {
 
             ZStack {
                 Circle()
-                    .fill(profile.role.color.opacity(0.12))
+                    .fill(.tint.opacity(0.12))
                     .frame(width: 96, height: 96)
                 Image(systemName: "person.circle.fill")
                     .font(.system(size: 48))
-                    .foregroundStyle(profile.role.color)
+                    .foregroundStyle(.tint)
             }
 
             VStack(spacing: 8) {
                 Text(profile.name)
                     .font(.title2)
                     .fontWeight(.semibold)
-                Text(profile.role.displayName)
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-                    .padding(.horizontal, 12)
-                    .padding(.vertical, 4)
-                    .background(profile.role.color.opacity(0.15))
-                    .clipShape(.capsule)
             }
 
             SecureField(String(localized: "auth.pin.placeholder"), text: $pin)
@@ -81,17 +74,4 @@ struct PinEntryView: View {
     }
 }
 
-extension ProfileRole {
-    var displayName: String {
-        switch self {
-        case .admin: String(localized: "role.admin")
-        case .seller: String(localized: "role.seller")
-        }
-    }
-    var color: Color {
-        switch self {
-        case .admin: .purple
-        case .seller: .blue
-        }
-    }
-}
+import UIKit

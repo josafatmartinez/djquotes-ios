@@ -13,14 +13,10 @@ struct ProfileListView: View {
                 HStack {
                     VStack(alignment: .leading) {
                         Text(profile.name).font(.headline)
-                        HStack(spacing: 6) {
-                            Text(profile.role.displayName).font(.caption).foregroundStyle(.secondary)
-                            if isCurrent {
-                                Text("—").font(.caption2).foregroundStyle(.tertiary)
-                                Text("auth.profiles.current")
-                                    .font(.caption2)
-                                    .foregroundStyle(.tertiary)
-                            }
+                        if isCurrent {
+                            Text("auth.profiles.current")
+                                .font(.caption2)
+                                .foregroundStyle(.tertiary)
                         }
                     }
                     Spacer()

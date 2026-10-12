@@ -291,9 +291,7 @@ struct StepSummary: View {
 
             Section(String(localized: "quote.notes")) {
                 TextField(String(localized: "quote.customerNotes"), text: $vm.customerNotes, axis: .vertical)
-                if auth.currentProfile?.role == .admin {
-                    TextField(String(localized: "quote.internalNotes"), text: $vm.internalNotes, axis: .vertical)
-                }
+                TextField(String(localized: "quote.internalNotes"), text: $vm.internalNotes, axis: .vertical)
             }
 
             Section {

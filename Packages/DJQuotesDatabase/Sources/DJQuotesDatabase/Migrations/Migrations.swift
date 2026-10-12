@@ -20,6 +20,20 @@ enum Migrations {
             try seedWorkerRoles(in: db)
         }
 
+        migrator.registerMigration("v2_remove_roles") { db in
+            try db.alter(table: "profiles") { t in
+                t.add(column: "deviceId", .text)
+            }
+            try db.execute(sql: "UPDATE profiles SET deviceId = id WHERE deviceId IS NULL")
+            try db.alter(table: "profiles") { t in
+                t.add(column: "deviceName", .text)
+            }
+        }
+
+        migrator.registerMigration("v3_sync_registry") { db in
+            try createSyncRegistry(in: db)
+        }
+
         try migrator.migrate(dbQueue)
     }
 
@@ -27,7 +41,6 @@ enum Migrations {
         try db.create(table: "profiles") { t in
             t.primaryKey("id", .text)
             t.column("name", .text).notNull()
-            t.column("role", .text).notNull()
             t.column("pinHash", .text).notNull()
             t.column("isActive", .boolean).notNull().defaults(to: true)
             t.column("createdAt", .datetime).notNull().defaults(sql: "CURRENT_TIMESTAMP")
@@ -196,5 +209,19 @@ enum Migrations {
             """,
             arguments: [installerId]
         )
+    }
+
+    private static func createSyncRegistry(in db: Database) throws {
+        try db.create(table: "sync_registry") { t in
+            t.primaryKey("id", .text)
+            t.column("sourceDeviceId", .text).notNull()
+            t.column("targetDeviceId", .text).notNull()
+            t.column("syncCatalog", .boolean).notNull().defaults(to: true)
+            t.column("syncCustomers", .boolean).notNull().defaults(to: true)
+            t.column("syncPackages", .boolean).notNull().defaults(to: true)
+            t.column("enabled", .boolean).notNull().defaults(to: false)
+            t.column("createdAt", .datetime).notNull().defaults(sql: "CURRENT_TIMESTAMP")
+            t.uniqueKey(["sourceDeviceId", "targetDeviceId"])
+        }
     }
 }

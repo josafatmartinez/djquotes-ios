@@ -5,7 +5,6 @@ struct CreateProfileView: View {
     @Environment(AuthManager.self) private var auth
     @Environment(\.dismiss) private var dismiss
     @State private var name = ""
-    @State private var role: ProfileRole = .admin
     @State private var pin = ""
     @State private var confirmPin = ""
 
@@ -14,10 +13,6 @@ struct CreateProfileView: View {
             Form {
                 Section(String(localized: "auth.profileInfo")) {
                     TextField(String(localized: "auth.name"), text: $name).textContentType(.name)
-                    Picker(String(localized: "auth.role"), selection: $role) {
-                        Text("role.admin").tag(ProfileRole.admin)
-                        Text("role.seller").tag(ProfileRole.seller)
-                    }
                 }
                 Section(String(localized: "auth.security")) {
                     SecureField(String(localized: "auth.pin"), text: $pin).keyboardType(.numberPad)
@@ -34,5 +29,5 @@ struct CreateProfileView: View {
         }
     }
     private var isValid: Bool { !name.trimmingCharacters(in: .whitespaces).isEmpty && pin.count == 4 && pin == confirmPin }
-    private func submit() async { guard await auth.createProfile(name: name, role: role, pin: pin) else { return }; dismiss() }
+    private func submit() async { guard await auth.createProfile(name: name, pin: pin) else { return }; dismiss() }
 }

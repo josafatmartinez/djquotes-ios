@@ -61,7 +61,7 @@ struct QuoteDetailView: View {
                         LabeledContent(String(localized: "quote.balance"), value: Money(version.balance)?.formatted() ?? "$0.00").fontWeight(.bold)
                     }
 
-                    if auth.currentProfile?.role == .admin, !costItems.isEmpty {
+                    if !costItems.isEmpty {
                         Section(String(localized: "quote.internalCosts")) {
                             ForEach(costItems) { item in
                                 HStack {
@@ -150,7 +150,7 @@ struct QuoteDetailView: View {
 
     private func load() async {
         isLoading = true
-        do {
+do {
             if let versionId = quote.currentVersionId {
                 version = try await DatabaseManager.shared.read { db in
                     try QuoteVersion.fetchOne(db, key: versionId)
@@ -159,10 +159,8 @@ struct QuoteDetailView: View {
                     try QuoteItem.filter(Column("quoteVersionId") == versionId)
                         .order(Column("sortOrder").asc).fetchAll(db)
                 }
-                if auth.currentProfile?.role == .admin {
-                    costItems = try await DatabaseManager.shared.read { db in
-                        try QuoteCostItem.filter(Column("quoteVersionId") == versionId).fetchAll(db)
-                    }
+                costItems = try await DatabaseManager.shared.read { db in
+                    try QuoteCostItem.filter(Column("quoteVersionId") == versionId).fetchAll(db)
                 }
             }
         } catch {

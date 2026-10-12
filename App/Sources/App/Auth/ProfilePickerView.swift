@@ -49,7 +49,6 @@ struct ProfilePickerView: View {
                                     .font(.title2).foregroundStyle(profile.isActive ? .primary : .secondary)
                                 VStack(alignment: .leading) {
                                     Text(profile.name).font(.headline)
-                                    Text(profile.role.displayName).font(.caption).foregroundStyle(.secondary)
                                 }
                                 Spacer()
                                 if !profile.isActive { Text("auth.accountDisabled").font(.caption2).foregroundStyle(.red) }
@@ -241,7 +240,7 @@ struct OnboardingCreateProfileView: View {
     }
 
     private func create() async {
-        guard await auth.createProfile(name: name, role: .admin, pin: pin) else {
+        guard await auth.createProfile(name: name, pin: pin) else {
             isCreating = false
             return
         }
