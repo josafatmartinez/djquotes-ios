@@ -28,7 +28,7 @@ struct DJQuotesApp: App {
                 Circle()
                     .fill(.tint.opacity(0.12))
                     .frame(width: 100, height: 100)
-                Image(systemName: "doc.richtext.fill")
+                Image(systemName: "music.note.list")
                     .font(.system(size: 40))
                     .foregroundStyle(.tint)
             }
