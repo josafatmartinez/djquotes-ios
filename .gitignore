@@ -1,23 +1,20 @@
-# Xcode
-*.xcuserdata
-*.xcworkspace
+# Xcode — user-specific
 xcuserdata/
-DerivedData/
+*.xcuserdata
 *.moved-aside
 *.pbxuser
-!default.pbxuser
 *.mode1v3
-!default.mode1v3
 *.mode2v3
-!default.mode2v3
 *.perspectivev3
-!default.perspectivev3
+DerivedData/
+*/project.xcworkspace/
 
-# Swift Package Manager
+# NOTE: DJQuotes.xcworkspace is COMMITTED (needed for Xcode)
+# *.xcworkspace intentionally removed — don't ignore it.
+
+# SPM
 .build/
 .swiftpm/
-
-# Generated
 Packages/*/.build/
 Packages/*/.swiftpm/
 
@@ -25,7 +22,6 @@ Packages/*/.swiftpm/
 .DS_Store
 .AppleDouble
 .LSOverride
-Icon
 ._*
 .DocumentRevisions-V100
 .fseventsd
@@ -35,7 +31,31 @@ Icon
 VolumeIcon.icns
 .com.apple.timemachine.donotpresent
 
-# Build
+# Build artifacts
 *.ipa
 *.dSYM.zip
 *.dSYM
+
+# SQLite databases (local test DBs)
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+
+# OpenCode local config (project-specific)
+.opencode/
+.agents/
+skills-lock.json
+
+# Fastlane (future CI)
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output/
+
+# CocoaPods (if ever used)
+Pods/
+
+# Swift Playgrounds (if ever used)
+*.playground/
+timeline.xctimeline
+playground.xcworkspace
