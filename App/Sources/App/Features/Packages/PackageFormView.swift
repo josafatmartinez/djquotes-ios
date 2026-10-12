@@ -55,7 +55,7 @@ struct PackageFormView: View {
                                     Text("Qty: \(item.quantity)").font(.caption).foregroundStyle(.secondary)
                                 }
                                 Spacer()
-                                Toggle("Opt", isOn: $item.isOptional).labelsHidden()
+                                Toggle(String(localized: "packages.itemOptional"), isOn: $item.isOptional).labelsHidden()
                             }
                         }
                     }

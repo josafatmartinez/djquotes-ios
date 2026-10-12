@@ -170,7 +170,7 @@ struct StepCustomize: View {
         List {
             ForEach(Array($vm.wizardItems.enumerated()), id: \.element.id) { index, $item in
                 HStack {
-                    TextField("Label", text: $item.label).font(.subheadline)
+                    TextField(String(localized: "quote.itemLabel"), text: $item.label).font(.subheadline)
                     TextField("0.00", text: $item.unitPrice).keyboardType(.decimalPad).frame(width: 80).font(.subheadline)
                     TextField("1", text: $item.quantity).keyboardType(.numberPad).frame(width: 50).font(.subheadline)
                 }
@@ -194,7 +194,7 @@ struct StepExtras: View {
             Section(String(localized: "quote.extras.items")) {
                 ForEach(Array($vm.wizardExtras.enumerated()), id: \.element.id) { index, $item in
                     HStack {
-                        TextField("Label", text: $item.label).font(.subheadline)
+                        TextField(String(localized: "quote.itemLabel"), text: $item.label).font(.subheadline)
                         TextField("0.00", text: $item.unitPrice).keyboardType(.decimalPad).frame(width: 80)
                         TextField("1", text: $item.quantity).keyboardType(.numberPad).frame(width: 50)
                     }
