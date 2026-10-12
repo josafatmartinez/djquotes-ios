@@ -1,5 +1,9 @@
 # DJQuotes iOS — Agent Instructions
 
+## Project State
+
+Read `MEMORY.md` before substantial work for current project state, known issues, and next priorities. Keep it updated when project state changes. This file contains stable instructions; `MEMORY.md` contains mutable state.
+
 ## Build & Run
 
 ```bash
