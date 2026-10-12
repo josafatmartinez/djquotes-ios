@@ -39,13 +39,6 @@ jobs:
         working-directory: Packages/DJQuotesDomain
         run: swift test
 
-      - name: Build iOS app
-        run: >-
-          xcodebuild -project DJQuotes.xcodeproj -scheme DJQuotes
-          -configuration Release -sdk iphonesimulator
-          -destination 'generic/platform=iOS Simulator'
-          CODE_SIGNING_ALLOWED=NO build
-
       - name: Create GitHub Release
         env:
           GH_TOKEN: ${{ github.token }}

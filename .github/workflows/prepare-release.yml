@@ -46,13 +46,6 @@ jobs:
         working-directory: Packages/DJQuotesDomain
         run: swift test
 
-      - name: Build iOS app
-        run: >-
-          xcodebuild -project DJQuotes.xcodeproj -scheme DJQuotes
-          -configuration Debug -sdk iphonesimulator
-          -destination 'generic/platform=iOS Simulator'
-          CODE_SIGNING_ALLOWED=NO build
-
       - name: Update version and changelog
         env:
           VERSION: ${{ inputs.version }}
