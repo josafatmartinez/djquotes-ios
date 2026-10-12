@@ -1,6 +1,7 @@
 import SwiftUI
 import DJQuotesDatabase
 import DJQuotesDomain
+import DJQuotesPDF
 import GRDB
 import DJQuotesDomain
 
@@ -13,6 +14,8 @@ struct QuoteDetailView: View {
     @State private var items: [QuoteItem] = []
     @State private var costItems: [QuoteCostItem] = []
     @State private var isLoading = true
+    @State private var showShareSheet = false
+    @State private var pdfData: Data?
 
     var body: some View {
         Group {
@@ -95,10 +98,54 @@ struct QuoteDetailView: View {
                     }
                 }
                 .navigationTitle(quote.folio)
+                    .toolbar {
+                        ToolbarItem(placement: .primaryAction) {
+                            Button {
+                                generatePDF()
+                            } label: {
+                                Image(systemName: "square.and.arrow.up")
+                            }
+                        }
+                    }
+                    .sheet(isPresented: $showShareSheet) {
+                        if let data = pdfData {
+                            ShareSheetView(items: [data])
+                        }
+                    }
             }
         }
         .task { await load() }
         .refreshable { await load() }
+    }
+
+    private func generatePDF() {
+        guard let v = version else { return }
+        let extras = items.filter { !$0.isPackageComponent && ($0.label.lowercased().contains("extra") || !$0.showOnQuote) }
+        let mainItems = items.filter { $0 != nil && $0.showOnQuote && $0.isPackageComponent }
+        let allItems = items.filter { $0 != nil && $0.showOnQuote }
+
+        let itemTuples = allItems.map { (label: $0.label, quantity: $0.quantity, unitPrice: $0.unitPrice) }
+
+        pdfData = QuotePDFGenerator.generate(
+            folio: quote.folio,
+            customerName: v.customerNameSnapshot ?? "",
+            customerPhone: v.customerPhoneSnapshot ?? "",
+            customerEmail: v.customerEmailSnapshot,
+            eventName: v.eventName,
+            eventDate: v.eventDate?.formatted(date: .long, time: .omitted),
+            items: itemTuples,
+            extras: [],
+            subtotal: v.subtotal,
+            extrasSubtotal: "0",
+            discount: v.discount,
+            travelCharge: v.travelCharge,
+            total: v.total,
+            deposit: v.depositAmount,
+            balance: v.balance,
+            notes: v.customerNotes,
+            generatedAt: Date()
+        )
+        showShareSheet = true
     }
 
     private func load() async {
@@ -146,4 +193,16 @@ extension QuoteStatus {
         case .cancelled: .red
         }
     }
+}
+
+import UIKit
+
+struct ShareSheetView: UIViewControllerRepresentable {
+    let items: [Any]
+
+    func makeUIViewController(context: Context) -> UIActivityViewController {
+        UIActivityViewController(activityItems: items, applicationActivities: nil)
+    }
+
+    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}
 }

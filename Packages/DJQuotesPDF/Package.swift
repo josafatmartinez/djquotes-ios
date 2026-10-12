@@ -7,7 +7,17 @@ let package = Package(
     products: [
         .library(name: "DJQuotesPDF", targets: ["DJQuotesPDF"]),
     ],
+    dependencies: [
+        .package(path: "../DJQuotesDatabase"),
+        .package(path: "../DJQuotesDomain"),
+    ],
     targets: [
-        .target(name: "DJQuotesPDF"),
+        .target(
+            name: "DJQuotesPDF",
+            dependencies: [
+                .product(name: "DJQuotesDatabase", package: "DJQuotesDatabase"),
+                .product(name: "DJQuotesDomain", package: "DJQuotesDomain"),
+            ]
+        ),
     ]
 )
