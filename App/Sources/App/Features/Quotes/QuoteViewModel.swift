@@ -26,6 +26,18 @@ enum QuoteWizardStep: Int, CaseIterable {
         case .summary: String(localized: "quote.wizard.summary")
         }
     }
+
+    var icon: String {
+        switch self {
+        case .customer: "person.fill"
+        case .eventDetails: "calendar"
+        case .source: "shippingbox"
+        case .customize: "slider.horizontal.3"
+        case .extras: "sparkles"
+        case .pricing: "dollarsign.circle"
+        case .summary: "list.clipboard"
+        }
+    }
 }
 
 // MARK: - ViewModel

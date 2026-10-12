@@ -49,8 +49,30 @@ struct CustomerListFullView: View {
 
 struct CustomerRowView: View {
     let customer: Customer
+
+    private var initials: String {
+        let parts = customer.name.split(separator: " ").prefix(2)
+        return parts.compactMap { $0.first }.map(String.init).joined().uppercased()
+    }
+
+    private var avatarColor: Color {
+        let colors: [Color] = [.blue, .purple, .orange, .green, .pink, .teal, .indigo]
+        let index = abs(customer.name.hashValue) % colors.count
+        return colors[index]
+    }
+
     var body: some View {
-        HStack {
+        HStack(spacing: 12) {
+            ZStack {
+                Circle()
+                    .fill(avatarColor.opacity(0.15))
+                    .frame(width: 40, height: 40)
+                Text(initials)
+                    .font(.caption)
+                    .fontWeight(.semibold)
+                    .foregroundStyle(avatarColor)
+            }
+
             VStack(alignment: .leading, spacing: 4) {
                 Text(customer.name).font(.headline)
                 Text(customer.phone).font(.subheadline).foregroundStyle(.secondary)

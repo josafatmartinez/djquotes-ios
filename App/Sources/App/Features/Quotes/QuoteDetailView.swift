@@ -21,7 +21,15 @@ struct QuoteDetailView: View {
                 List {
                     Section(String(localized: "quote.detail.header")) {
                         LabeledContent(String(localized: "quote.folio"), value: quote.folio)
-                        LabeledContent(String(localized: "quote.status"), value: version.status.displayName)
+                        LabeledContent(String(localized: "quote.status")) {
+                        Text(version.status.displayName)
+                            .fontWeight(.medium)
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 2)
+                            .background(version.status.color.opacity(0.15))
+                            .foregroundStyle(version.status.color)
+                            .clipShape(.capsule)
+                    }
                         LabeledContent(String(localized: "quote.version"), value: "V\(version.versionNumber)")
                         LabeledContent(String(localized: "quote.createdAt"), value: version.createdAt.formatted(date: .abbreviated, time: .shortened))
                     }
@@ -126,6 +134,16 @@ extension QuoteStatus {
         case .rejected: String(localized: "quote.status.rejected")
         case .expired: String(localized: "quote.status.expired")
         case .cancelled: String(localized: "quote.status.cancelled")
+        }
+    }
+    var color: Color {
+        switch self {
+        case .draft: .secondary
+        case .sent: .blue
+        case .accepted: .green
+        case .rejected: .red
+        case .expired: .orange
+        case .cancelled: .red
         }
     }
 }

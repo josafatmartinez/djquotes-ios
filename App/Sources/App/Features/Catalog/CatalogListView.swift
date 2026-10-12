@@ -63,7 +63,16 @@ struct CatalogListView: View {
 struct CatalogRowView: View {
     let item: CatalogItem
     var body: some View {
-        HStack {
+        HStack(spacing: 12) {
+            ZStack {
+                Circle()
+                    .fill(item.type.iconColor.opacity(0.15))
+                    .frame(width: 40, height: 40)
+                Image(systemName: item.type.icon)
+                    .font(.callout)
+                    .foregroundStyle(item.type.iconColor)
+            }
+
             VStack(alignment: .leading, spacing: 4) {
                 Text(item.name).font(.headline)
                 Text(item.type.displayName).font(.caption).foregroundStyle(.secondary)
@@ -89,6 +98,24 @@ extension CatalogItemType: @retroactive CaseIterable {
         case .accessory: String(localized: "catalog.type.accessory")
         case .extra: String(localized: "catalog.type.extra")
         case .consumable: String(localized: "catalog.type.consumable")
+        }
+    }
+    var icon: String {
+        switch self {
+        case .service: "wrench.and.screwdriver.fill"
+        case .equipment: "hifispeaker.fill"
+        case .accessory: "cable.connector"
+        case .extra: "sparkles"
+        case .consumable: "drop.fill"
+        }
+    }
+    var iconColor: Color {
+        switch self {
+        case .service: .purple
+        case .equipment: .blue
+        case .accessory: .orange
+        case .extra: .yellow
+        case .consumable: .teal
         }
     }
 }

@@ -12,15 +12,9 @@ struct QuoteEditorView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
-                HStack(spacing: 0) {
-                    ForEach(QuoteWizardStep.allCases, id: \.rawValue) { step in
-                        Rectangle()
-                            .fill(step.rawValue <= selectedStep.rawValue ? Color.accentColor : Color.secondary.opacity(0.2))
-                            .frame(height: 4)
-                    }
-                }
-                .padding(.horizontal)
-                .padding(.top, 8)
+                wizardProgressBar
+                    .padding(.horizontal, 16)
+                    .padding(.top, 8)
 
                 TabView(selection: $selectedStep) {
                     StepCustomer(vm: vm).tag(QuoteWizardStep.customer)
@@ -48,6 +42,35 @@ struct QuoteEditorView: View {
                             }
                         }
                         .disabled(vm.isSaving)
+                    }
+                }
+            }
+        }
+    }
+
+    private var wizardProgressBar: some View {
+        HStack(spacing: 0) {
+            ForEach(Array(QuoteWizardStep.allCases.enumerated()), id: \.element.rawValue) { index, step in
+                HStack(spacing: 0) {
+                    ZStack {
+                        Circle()
+                            .fill(index <= selectedStep.rawValue ? Color.accentColor : Color.secondary.opacity(0.2))
+                            .frame(width: 28, height: 28)
+                        if index < selectedStep.rawValue {
+                            Image(systemName: "checkmark")
+                                .font(.caption2.bold())
+                                .foregroundStyle(.white)
+                        } else {
+                            Text("\(index + 1)")
+                                .font(.caption2.bold())
+                                .foregroundStyle(index == selectedStep.rawValue ? .white : .secondary)
+                        }
+                    }
+
+                    if index < QuoteWizardStep.allCases.count - 1 {
+                        Rectangle()
+                            .fill(index < selectedStep.rawValue ? Color.accentColor : Color.secondary.opacity(0.2))
+                            .frame(height: 2)
                     }
                 }
             }
