@@ -47,7 +47,7 @@ struct SettingsView: View {
                     NavigationLink(String(localized: "auth.profiles")) { ProfileListView() }
                     NavigationLink(String(localized: "tab.packages")) { PackageListView() }
                     NavigationLink(String(localized: "settings.workerRoles")) { WorkerRolesView() }
-                    NavigationLink("Sync") { Text("Coming soon") }
+                    NavigationLink("Sync") { SyncSettingsView() }
                 }
                 Section { Button(role: .destructive) { auth.logout() } label: { Text("auth.logout") } }
             }

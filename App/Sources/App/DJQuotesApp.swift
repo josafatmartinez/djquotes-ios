@@ -4,13 +4,16 @@ import DJQuotesDatabase
 @main
 struct DJQuotesApp: App {
     @State private var auth = AuthManager()
+    @State private var sync = SyncManager()
     @State private var dbReady = false
 
     var body: some Scene {
         WindowGroup {
             Group {
                 if dbReady {
-                    AuthGateView().environment(auth)
+                    AuthGateView()
+                        .environment(auth)
+                        .environment(sync)
                 } else {
                     splashView
                 }
