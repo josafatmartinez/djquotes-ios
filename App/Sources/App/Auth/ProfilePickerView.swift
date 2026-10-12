@@ -11,8 +11,17 @@ struct ProfilePickerView: View {
     var body: some View {
         VStack(spacing: 24) {
             Spacer()
-            Image(systemName: "quote.bubble.fill").font(.system(size: 48)).foregroundStyle(.tint)
-            Text("app.name", tableName: nil).font(.largeTitle).fontWeight(.bold)
+
+            ZStack {
+                Circle()
+                    .fill(.tint.opacity(0.12))
+                    .frame(width: 100, height: 100)
+                Image(systemName: "doc.richtext.fill")
+                    .font(.system(size: 40))
+                    .foregroundStyle(.tint)
+            }
+
+            Text("app.name").font(.largeTitle).fontWeight(.bold)
             if isLoading { ProgressView() }
             else if profiles.isEmpty {
                 VStack(spacing: 16) {
@@ -78,84 +87,171 @@ struct OnboardingCreateProfileView: View {
     @State private var name = ""
     @State private var pin = ""
     @State private var confirmPin = ""
+    @State private var isCreating = false
+    @FocusState private var focusedField: Field?
+
+    enum Field { case name, pin, confirmPin }
+
+    private var pinMatch: Bool { pin.count == 4 && confirmPin.count == 4 && pin == confirmPin }
 
     var body: some View {
-        VStack(spacing: 24) {
-            Spacer()
+        NavigationStack {
+            ScrollView {
+                VStack(spacing: 32) {
+                    headerSection
+                    formSection
+                }
+                .padding(.horizontal, 24)
+                .padding(.vertical, 32)
+            }
+            .background(Color(.systemGroupedBackground))
+            .navigationTitle("app.name")
+            .navigationBarTitleDisplayMode(.inline)
+            .interactiveDismissDisabled()
+        }
+    }
 
-            Image(systemName: "person.badge.key.fill")
-                .font(.system(size: 56))
-                .foregroundStyle(.tint)
+    private var headerSection: some View {
+        VStack(spacing: 16) {
+            ZStack {
+                Circle()
+                    .fill(.tint.opacity(0.12))
+                    .frame(width: 100, height: 100)
+                Image(systemName: "doc.richtext.fill")
+                    .font(.system(size: 40))
+                    .foregroundStyle(.tint)
+            }
 
-            Text("auth.createFirstProfile")
-                .font(.title2)
-                .fontWeight(.bold)
+            VStack(spacing: 8) {
+                Text("auth.createFirstProfile")
+                    .font(.title2)
+                    .fontWeight(.bold)
+                    .multilineTextAlignment(.center)
 
-            Text("auth.createFirstProfileDescription")
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
-                .multilineTextAlignment(.center)
-                .padding(.horizontal, 32)
+                Text("auth.createFirstProfileDescription")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                    .multilineTextAlignment(.center)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+        }
+    }
 
+    private var formSection: some View {
+        VStack(spacing: 20) {
             VStack(spacing: 12) {
-                TextField(String(localized: "auth.name"), text: $name)
-                    .textContentType(.name)
-                    .textFieldStyle(.roundedBorder)
-                    .frame(maxWidth: 280)
+                HStack(spacing: 10) {
+                    Image(systemName: "person.fill")
+                        .foregroundStyle(.secondary)
+                        .frame(width: 20)
+                    TextField(String(localized: "auth.name"), text: $name)
+                        .textContentType(.name)
+                        .focused($focusedField, equals: .name)
+                        .submitLabel(.next)
+                        .onSubmit { focusedField = .pin }
+                }
+                .padding(12)
+                .background(.regularMaterial)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
 
-                SecureField(String(localized: "auth.pin.placeholder"), text: $pin)
-                    .keyboardType(.numberPad)
-                    .textFieldStyle(.roundedBorder)
-                    .frame(maxWidth: 280)
-                    .onChange(of: pin) { _, v in
-                        pin = String(v.filter(\.isNumber).prefix(4))
+                HStack(spacing: 10) {
+                    Image(systemName: "lock.fill")
+                        .foregroundStyle(.secondary)
+                        .frame(width: 20)
+                    SecureField(String(localized: "auth.pin.placeholder"), text: $pin)
+                        .keyboardType(.numberPad)
+                        .focused($focusedField, equals: .pin)
+                        .onChange(of: pin) { _, v in
+                            pin = String(v.filter(\.isNumber).prefix(4))
+                            if pin.count == 4 { focusedField = .confirmPin }
+                        }
+                    if pinMatch {
+                        Image(systemName: "checkmark.circle.fill")
+                            .foregroundStyle(.green)
+                            .font(.callout)
                     }
+                }
+                .padding(12)
+                .background(.regularMaterial)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
 
-                SecureField(String(localized: "auth.confirmPin"), text: $confirmPin)
-                    .keyboardType(.numberPad)
-                    .textFieldStyle(.roundedBorder)
-                    .frame(maxWidth: 280)
-                    .onChange(of: confirmPin) { _, v in
-                        confirmPin = String(v.filter(\.isNumber).prefix(4))
+                HStack(spacing: 10) {
+                    Image(systemName: "lock.shield.fill")
+                        .foregroundStyle(.secondary)
+                        .frame(width: 20)
+                    SecureField(String(localized: "auth.confirmPin"), text: $confirmPin)
+                        .keyboardType(.numberPad)
+                        .focused($focusedField, equals: .confirmPin)
+                        .onChange(of: confirmPin) { _, v in
+                            confirmPin = String(v.filter(\.isNumber).prefix(4))
+                        }
+                    if pinMatch {
+                        Image(systemName: "checkmark.circle.fill")
+                            .foregroundStyle(.green)
+                            .font(.callout)
                     }
+                }
+                .padding(12)
+                .background(.regularMaterial)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
 
                 if let err = auth.error {
-                    Text(err).font(.callout).foregroundStyle(.red)
+                    Text(err)
+                        .font(.callout)
+                        .foregroundStyle(.red)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                 }
 
-                if !pin.isEmpty && pin != confirmPin {
+                if !pin.isEmpty && !pinMatch {
                     Text("auth.error.pinMismatch")
-                        .font(.caption).foregroundStyle(.red)
+                        .font(.caption)
+                        .foregroundStyle(.red)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                 }
             }
 
             Button {
+                isCreating = true
                 Task { await create() }
             } label: {
-                Text("auth.createProfile")
-                    .frame(maxWidth: 280)
+                Group {
+                    if isCreating {
+                        ProgressView()
+                            .tint(.white)
+                    } else {
+                        Text("auth.createProfile")
+                    }
+                }
+                .frame(maxWidth: .infinity)
             }
             .buttonStyle(.borderedProminent)
-            .disabled(!isValid)
-
-            Spacer()
+            .controlSize(.large)
+            .disabled(!isValid || isCreating)
         }
-        .padding()
+        .padding(20)
+        .background(.regularMaterial)
+        .clipShape(RoundedRectangle(cornerRadius: 16))
     }
 
     private var isValid: Bool {
         !name.trimmingCharacters(in: .whitespaces).isEmpty
             && pin.count == 4
+            && confirmPin.count == 4
             && pin == confirmPin
     }
 
     private func create() async {
-        guard await auth.createProfile(name: name, role: .admin, pin: pin) else { return }
+        guard await auth.createProfile(name: name, role: .admin, pin: pin) else {
+            isCreating = false
+            return
+        }
         do {
             let profiles = try await auth.fetchProfiles()
             if let created = profiles.first(where: { $0.name == name.trimmingCharacters(in: .whitespaces) }) {
                 onCreated(created)
             }
-        } catch {}
+        } catch {
+            isCreating = false
+        }
     }
 }
