@@ -1,0 +1,19 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  domain-tests:
+    name: Domain tests
+    runs-on: macos-latest
+    defaults:
+      run:
+        working-directory: Packages/DJQuotesDomain
+    steps:
+      - uses: actions/checkout@v4
+      - run: swift test

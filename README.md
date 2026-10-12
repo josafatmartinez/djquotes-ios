@@ -21,8 +21,19 @@ Event Quoter — native iOS app built with SwiftUI.
 
 ```bash
 swift build
+cd Packages/DJQuotesDomain
 swift test
 ```
+
+## Git Workflow
+
+- Keep `main` deployable.
+- Create work from `main`: `feature/<topic>`, `fix/<topic>`, or `chore/<topic>`.
+- Open a pull request into `main`. GitHub Actions runs domain tests on every push and pull request.
+- Squash merge after CI passes, then delete the remote branch.
+- Use Conventional Commits, for example `feat: add quote filters` or `fix: prevent invalid totals`.
+
+Repository is public, so GitHub Free can protect `main` and require CI checks.
 
 ## Architecture
 
