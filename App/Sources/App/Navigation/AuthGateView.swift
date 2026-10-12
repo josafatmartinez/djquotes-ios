@@ -27,7 +27,6 @@ struct MainTabView: View {
             QuoteListView().tabItem { Label(AppTab.quotes.label, systemImage: AppTab.quotes.icon) }.tag(AppTab.quotes)
             if profile.role == .admin {
                 CatalogView().tabItem { Label(AppTab.catalog.label, systemImage: AppTab.catalog.icon) }.tag(AppTab.catalog)
-                PackageListView().tabItem { Label(String(localized: "tab.packages"), systemImage: "shippingbox") }.tag(AppTab.settings)
             }
             SettingsView().tabItem { Label(AppTab.settings.label, systemImage: AppTab.settings.icon) }.tag(AppTab.settings)
         }
@@ -50,6 +49,7 @@ struct SettingsView: View {
                     }
                     NavigationLink(String(localized: "auth.profiles")) { ProfileListView() }
                     if auth.currentProfile?.role == .admin {
+                        NavigationLink(String(localized: "tab.packages")) { PackageListView() }
                         NavigationLink(String(localized: "settings.workerRoles")) { WorkerRolesView() }
                     }
                 }
