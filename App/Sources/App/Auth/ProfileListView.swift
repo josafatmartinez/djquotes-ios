@@ -9,14 +9,28 @@ struct ProfileListView: View {
     var body: some View {
         List {
             ForEach(profiles) { profile in
+                let isCurrent = profile.id == auth.currentProfile?.id
                 HStack {
                     VStack(alignment: .leading) {
                         Text(profile.name).font(.headline)
-                        Text(profile.role.displayName).font(.caption).foregroundStyle(.secondary)
+                        HStack(spacing: 6) {
+                            Text(profile.role.displayName).font(.caption).foregroundStyle(.secondary)
+                            if isCurrent {
+                                Text("—").font(.caption2).foregroundStyle(.tertiary)
+                                Text("auth.profiles.current")
+                                    .font(.caption2)
+                                    .foregroundStyle(.tertiary)
+                            }
+                        }
                     }
                     Spacer()
                     if !profile.isActive { Text("Inactive").font(.caption2).foregroundStyle(.red) }
-                    Toggle("", isOn: Binding(get: { profile.isActive }, set: { v in Task { await auth.toggleProfileActive(profile, isActive: v) } })).labelsHidden()
+                    Toggle("", isOn: Binding(
+                        get: { profile.isActive },
+                        set: { v in Task { await auth.toggleProfileActive(profile, isActive: v) } }
+                    ))
+                    .labelsHidden()
+                    .disabled(isCurrent)
                 }
             }
         }
