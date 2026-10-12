@@ -35,6 +35,14 @@ swift test
 
 Repository is public, so GitHub Free can protect `main` and require CI checks.
 
+## Releases
+
+- App versions use SemVer: `MAJOR.MINOR.PATCH`. Build numbers are increasing integers.
+- Run `Prepare release` from GitHub Actions on `main` with target version. It validates domain tests, updates version and `CHANGELOG.md`, then opens a release PR.
+- Merge release PR after CI passes. Create annotated tag `vMAJOR.MINOR.PATCH` on `main`.
+- Tag workflow validates app version and domain tests, then creates GitHub Release with generated notes.
+- GitHub hosted runners provide Xcode 26.6, but this project requires Xcode 27. Run iOS builds locally or add a self-hosted Xcode 27 runner before making iOS build a required CI check.
+
 ## Architecture
 
 ```
